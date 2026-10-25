@@ -1,1 +1,287 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings | Utopia Technologies</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f5f7;
+      --surface: #ffffff;
+      --text: #151515;
+      --muted: #626773;
+      --border: #d8dbe1;
+      --accent: #2457d6;
+      --header: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #101216;
+      --surface: #191c22;
+      --text: #f4f5f7;
+      --muted: #a9afbb;
+      --border: #343943;
+      --accent: #83a5ff;
+      --header: #15171c;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      transition: background .2s, color .2s;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    header {
+      background: var(--header);
+      border-bottom: 2px solid var(--text);
+    }
+
+    .nav {
+      max-width: 1200px;
+      min-height: 76px;
+      margin: auto;
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -.5px;
+    }
+
+    .logo {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--text);
+      font-size: 21px;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 9px 13px;
+      font-size: 14px;
+      font-weight: 700;
+      border-right: 1px solid var(--border);
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-links a:last-child { border-right: 0; }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 45px 22px 80px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 6vw, 52px);
+      letter-spacing: -1.5px;
+      margin: 0 0 12px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 26px;
+      margin-bottom: 18px;
+    }
+
+    .panel h2 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .panel p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .theme-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .theme-button {
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text);
+      padding: 13px 20px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .theme-button:hover { border-color: var(--accent); }
+
+    .theme-button[aria-pressed="true"] {
+      border: 2px solid var(--accent);
+      padding: 12px 19px;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 16px;
+    }
+
+    .home-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 13px 18px;
+      background: var(--text);
+      color: var(--bg);
+      font-weight: 800;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 22px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links a {
+        padding: 9px 10px 9px 0;
+        margin-right: 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
+  <script>
+    (function () {
+      try {
+        const saved = localStorage.getItem("ut-theme");
+        document.documentElement.dataset.theme =
+          saved === "dark" || saved === "light" ? saved : "light";
+      } catch (error) {
+        document.documentElement.dataset.theme = "light";
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="../" aria-label="Utopia Technologies home">
+        <span class="logo">UT</span>
+        <span>UTOPIA TECHNOLOGIES</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="../">Home</a>
+        <a href="../#websites">Our Websites</a>
+        <a href="../#shop">Shop</a>
+        <a href="./" aria-current="page">Settings ⚙</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Settings</h1>
+    <p class="subtitle">
+      Customize your Utopia Technologies website experience.
+    </p>
+
+    <section class="panel">
+      <h2>Appearance</h2>
+      <p>Choose how the website looks. Your choice is saved in this browser and used on both pages.</p>
+
+      <div class="theme-options">
+        <button class="theme-button" id="lightButton" type="button" data-choice="light">
+          Light Mode
+        </button>
+        <button class="theme-button" id="darkButton" type="button" data-choice="dark">
+          Dark Mode
+        </button>
+      </div>
+
+      <div class="status" id="themeStatus" role="status" aria-live="polite">
+        Loading appearance settings…
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>About</h2>
+      <p>Utopia Technologies website settings.</p>
+      <a class="home-link" href="../">Return Home</a>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Utopia Technologies. All rights reserved.
+  </footer>
+
+  <script>
+    const lightButton = document.getElementById("lightButton");
+    const darkButton = document.getElementById("darkButton");
+    const status = document.getElementById("themeStatus");
+
+    function applyTheme(theme, save = true) {
+      document.documentElement.dataset.theme = theme;
+
+      if (save) {
+        try {
+          localStorage.setItem("ut-theme", theme);
+          status.textContent = theme === "dark"
+            ? "Dark mode is enabled and saved."
+            : "Light mode is enabled and saved.";
+        } catch (error) {
+          status.textContent = theme === "dark"
+            ? "Dark mode is enabled for this page, but your browser did not allow saving the choice."
+            : "Light mode is enabled for this page, but your browser did not allow saving the choice.";
+        }
+      }
+
+      lightButton.setAttribute("aria-pressed", String(theme === "light"));
+      darkButton.setAttribute("aria-pressed", String(theme === "dark"));
+    }
+
+    lightButton.addEventListener("click", () => applyTheme("light"));
+    darkButton.addEventListener("click", () => applyTheme("dark"));
+
+    applyTheme(document.documentElement.dataset.theme || "light", false);
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
