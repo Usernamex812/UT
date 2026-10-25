@@ -1,1 +1,663 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101828">
+  <meta name="description" content="Utopia Technologies — building thoughtful digital solutions for a better future.">
+  <title>UT | Utopia Technologies</title>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f7fb;
+      --text: #101828;
+      --muted: #667085;
+      --accent: #425eea;
+      --border: #e7eaf0;
+      --dark: #101828;
+      --width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(var(--width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-mark {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      background: var(--dark);
+      color: white;
+      border-radius: 12px;
+      font-size: 19px;
+      letter-spacing: -1px;
+    }
+
+    .brand-name {
+      font-size: 17px;
+      line-height: 1.3;
+    }
+
+    .brand-name small {
+      display: block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1.6px;
+      color: var(--muted);
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a:not(.button):hover {
+      color: var(--accent);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: var(--accent);
+      color: white;
+      border: 1px solid var(--accent);
+      border-radius: 9px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 650;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .button:hover {
+      background: #334bd0;
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      background: white;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .button-outline:hover {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 112px 0 104px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 0%, #e9edff 0%, transparent 60%),
+        white;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent);
+      background: #eef0ff;
+      border: 1px solid #e0e5ff;
+      border-radius: 999px;
+      padding: 7px 13px;
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 1.6px;
+    }
+
+    .eyebrow span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 28px auto 22px;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.08;
+      letter-spacing: -4px;
+      font-weight: 800;
+    }
+
+    h1 .highlight {
+      color: var(--accent);
+    }
+
+    .hero-description {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .hero-note {
+      margin-top: 22px;
+      color: #98a2b3;
+      font-size: 12px;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-alt {
+      background: var(--surface);
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 42px;
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-top: 12px;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.2;
+      letter-spacing: -1.6px;
+    }
+
+    .section-description {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      padding: 28px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 35px rgba(16, 24, 40, 0.07);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #eef0ff;
+      color: var(--accent);
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    h3 {
+      margin: 20px 0 10px;
+      font-size: 19px;
+      letter-spacing: -0.4px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-copy p {
+      margin-top: 18px;
+      color: var(--muted);
+    }
+
+    .principles {
+      display: grid;
+      gap: 15px;
+    }
+
+    .principle {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 20px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .check {
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      background: #eef0ff;
+      border-radius: 50%;
+      font-weight: 800;
+    }
+
+    .principle strong {
+      display: block;
+      font-size: 15px;
+    }
+
+    .principle p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .contact-box {
+      padding: 60px 30px;
+      text-align: center;
+      background: var(--dark);
+      color: white;
+      border-radius: 20px;
+    }
+
+    .contact-box h2 {
+      margin-top: 0;
+    }
+
+    .contact-box p {
+      max-width: 550px;
+      margin: 16px auto 27px;
+      color: #c5ccda;
+    }
+
+    .contact-box .button {
+      background: white;
+      color: var(--dark);
+      border-color: white;
+    }
+
+    .contact-box .button:hover {
+      background: #e9edff;
+    }
+
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-copy, .footer-links {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      nav {
+        min-height: 68px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 12px;
+      }
+
+      .nav-links .button {
+        padding: 9px 12px;
+        font-size: 12px;
+      }
+
+      .brand-name small {
+        font-size: 9px;
+        letter-spacing: 1px;
+      }
+
+      .hero {
+        padding: 82px 0 75px;
+      }
+
+      h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .brand-name {
+        font-size: 15px;
+      }
+
+      .brand-mark {
+        width: 38px;
+        height: 38px;
+      }
+
+      .nav-links {
+        gap: 10px;
+      }
+
+      .nav-links a:nth-child(1) {
+        display: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="UT home">
+        <span class="brand-mark">UT</span>
+        <span class="brand-name">
+          Utopia Technologies
+          <small>TECHNOLOGY, REIMAGINED.</small>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a class="button" href="#contact">Contact Us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">
+          <span></span>
+          WELCOME TO UTOPIA TECHNOLOGIES
+        </div>
+
+        <h1>
+          Building a better<br>
+          <span class="highlight">digital future.</span>
+        </h1>
+
+        <p class="hero-description">
+          We believe technology should make life simpler, businesses
+          smarter, and new possibilities achievable. Welcome to UT.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="#services">Explore UT &rarr;</a>
+          <a class="button button-outline" href="#about">Who We Are</a>
+        </div>
+
+        <p class="hero-note">
+          UTOPIA TECHNOLOGIES &bull; BUILT FOR WHAT'S NEXT
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="services">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">What We Do</span>
+          <h2>Ideas into technology.</h2>
+          <p class="section-description">
+            We are building toward a world where technology works
+            better for people. These are the areas UT can grow into.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">&lt;/&gt;</div>
+            <h3>Software &amp; Development</h3>
+            <p>
+              Websites, applications, and digital tools designed
+              around real needs and practical solutions.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">&#9678;</div>
+            <h3>Technology Solutions</h3>
+            <p>
+              Exploring smarter ways to connect systems, improve
+              workflows, and solve everyday challenges.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon" aria-hidden="true">&#10022;</div>
+            <h3>Innovation</h3>
+            <p>
+              Developing fresh concepts and turning ambitious ideas
+              into useful products and experiences.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-copy">
+            <span class="section-label">About UT</span>
+            <h2>A better future starts with a better idea.</h2>
+            <p>
+              Utopia Technologies is a technology company concept
+              built around creativity, useful innovation, and the
+              belief that there is always a better way to do things.
+            </p>
+            <p>
+              Our goal is to explore new possibilities, create
+              meaningful digital experiences, and grow ideas into
+              technology people can actually use.
+            </p>
+          </div>
+
+          <div class="principles">
+            <div class="principle">
+              <span class="check" aria-hidden="true">&#10003;</span>
+              <div>
+                <strong>Think Differently</strong>
+                <p>Question the ordinary and explore better solutions.</p>
+              </div>
+            </div>
+
+            <div class="principle">
+              <span class="check" aria-hidden="true">&#10003;</span>
+              <div>
+                <strong>Build With Purpose</strong>
+                <p>Make technology useful, clear, and accessible.</p>
+              </div>
+            </div>
+
+            <div class="principle">
+              <span class="check" aria-hidden="true">&#10003;</span>
+              <div>
+                <strong>Keep Improving</strong>
+                <p>Learn, adapt, and make every version better.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Have an idea? Let's talk.</h2>
+          <p>
+            Great things begin with a conversation. Get in touch
+            to discuss an idea, a project, or the future of UT.
+          </p>
+
+          <!-- Replace the email address below with your real company email. -->
+          <a class="button"
+             href="mailto:contact@yourdomain.com?subject=UT%20Inquiry">
+            Contact Utopia Technologies &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="#home">
+        <span class="brand-mark">UT</span>
+        <span class="brand-name">
+          Utopia Technologies
+          <small>TECHNOLOGY, REIMAGINED.</small>
+        </span>
+      </a>
+
+      <p class="footer-copy">
+        &copy; <span id="year"></span> Utopia Technologies.
+        All rights reserved.
+      </p>
+
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
